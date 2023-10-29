@@ -1,0 +1,28 @@
+# Build artifacts
+.vscode
+/legacy/*/build
+/legacy/*/obj
+
+# build file
+build.h
+
+# ide config
+.idea
+
+# ignore vim swp file
+*.swp
+
+# Ignore memory dumps
+*.dmp
+
+# Ignore efi bins
+*.efi
+
+# Work folder
+/work
+
+# Python cache
+__pycache__
+
+# Ignore hidden folders
+/__*
