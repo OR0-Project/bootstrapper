@@ -18,10 +18,9 @@ prep:
 
 clean:
 	rm -rf ./build
-	rm -rf ../../../cdrom/sys/loader*
 	rm -rf ./obj
 
-all: loader-iso
+all: build/loader
 
 
 run: clean all
@@ -30,13 +29,6 @@ run: clean all
 debug: clean all
 	gdb -q --args $(EMU) \
         -enable-kvm -smp 2 -m 256 -cdrom build/loader.iso -cpu Westmere $(EMU_FLAGS)
-
-
-# loader artifacts
-loader-iso: build/loader
-	echo Preparing ISO image...
-	cp build/loader ../../../cdrom/sys/loader.bin
-	grub-mkrescue -o build/loader.iso ../../../cdrom
 
 build/loader: prep loader.o main.o 
 	$(LINK) $(LINK_FLAGS) -o build/loader obj/loader.o obj/main.o -T src/loader.ld

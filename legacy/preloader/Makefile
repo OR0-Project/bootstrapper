@@ -16,13 +16,10 @@ prep:
 
 clean:
 	rm -rf ./build
-	rm -rf ../../cdrom/sys/preloader*
 	rm -rf ./obj
 
 build/preloader: prep preloader.o main.o 
 	$(LINK) $(LINK_FLAGS) -o build/preloader obj/preloader.o obj/main.o -T src/preloader.ld
-	cp build/preloader ../../../cdrom/sys/preloader.bin
-
 
 # objects
 main.o:
